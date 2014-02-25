@@ -1,35 +1,32 @@
 This repository contains three files:
 
-1.-This readme file.
+1.-This file.
 2.-UPCATRIALMODEL.tar.gz
 3.-A version of the gnu scientific library.
 
-A current version of the  gsl library can be obtained 
-at: 
+An updated version of the  gsl library can be obtained 
+at: http://www.gnu.org/software/gsl
 
-http://www.gnu.org/software/gsl
+Here it is only distributed for completeness, because the code 
+relies heavily on the library so it should be instaled in your system.
 
-Here is only distributed for completeness, the code 
-relies heavily on the library. So a working version 
-of it should be in your system.
+The code is contained in the file UPCatrialCell.c which is located within the 
+bundle UPCATRIALMODEL.tar.gz alongside a folder called SAMPLEOUTPUT, which contains
+results obtained by running the code as it is packed here.
 
-The code is contained in the file UPCatrialCell.c contained in the 
-bundle UPCATRIALMODEL.tar.gz alongside a test output contained in the folder 
-SAMPLEOUTPUT.
+The parameters chosen are: 
+Stimulus period Ts=400 ms, 
+Recovery time 200ms (healthy cell) and 700ms for the alternating cell.
 
-The parameters chosen are stimulus period Ts=400 ms, recovery time 200ms for 
-a healthy cell and Ts=700ms for the alternating cell.
+All the output files consist of three columns which correspond to time, Healthy Cell and
+Alternating Cell signals respectively.
 
-All the resultant files contain three columns, which correspond to time, Healthy Cell and
-Alternating Cell, respectively.
-
-
-A shell script file called 'atriacompile' is included which should work
-on any standard local gsl instalation, it executes:
+Also in the bundle, a shell script file called 'atriacompile' is included which should work
+on any standard local gsl instalation, it executes the line:
 
 cc -I/usr/local/include -o AtrialCell UPCatrialCell.c -L/usr/local/lib -lgsl -lgslcblas -lm
 
-If the instalation paths of the library are different they can be found by
+If the installation paths of the library are different they can be found by
 executing:
 
 gsl-config --libs --cflags
