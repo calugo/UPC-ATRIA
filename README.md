@@ -10,9 +10,9 @@ alternans?: insights from a human atrial model (DOI:
 It contains four files:
 
 1. This file.
-2. UPCATRIALMODEL.tar.gz-C version of the program.
+2. UPCATRIALMODEL.tar.gz: C version of the program.
 3. A version of the gnu scientific library.
-4. UPC-ATRIALCELL.f-Fortran version of the program.
+4. UPCATRIALMODELF.tar.gz: Fortran version of the program.
 
 ## The gnu scientific library:
 
@@ -41,7 +41,11 @@ All the output files consist of three columns which correspond to time, healthy
 cell and
 alternating cell signals respectively.
 
-## Compilation and Excecution (Unix/Mac OS).
+The codes does not starts writin outputs until a number of iterations are first
+calculated, so it only prints
+values closer or at the stationary state.
+
+### Compilation and Execution (Unix/Mac OS).
 
 The script 'atriacompile' executes the line:
 
@@ -59,7 +63,26 @@ be run in a terminal as:
 
 `$ ./AtrialCell`
 
-## Fortran Code- UPC-ATRIALCELL.f
+## Fortran Bundle: UPCATRIALMODELF.tar.gz
 
-A fortran version of the code is also available which only needs to be compiled
-and executed.
+This contains a fortran source `UPC-ATRIALCELL.f` and a binary file `check.dat`.
+
+### Compilation and Execution (Unix/Mac OS)
+
+To compile the code type in UNIX/MAC OS, type in a terminal:
+
+`$gfortran -o exfilename sourcefilename.f`
+
+then run:
+
+`$./exfilename`
+
+The binary file  `check.dat` is read at the beginning of the execution and it
+contains the initial data obtained for
+Ts=1000 ms which are then evaluated for other pacing values (*Tsvalue*). Then,
+the outcomes are written in another binary file called `output.dat.Tsvalue`.
+
+It also writes standard text files for the time evolution of the voltage and
+every Calcium concentration
+(`volt.dat.Tsvalue`) and a file with the action potential duration APD(DI)
+(`rest0dss.dat`).
