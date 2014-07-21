@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <title>Upc-atria by calugo</title>
+  </head>
+
+  <body>
+    <header>
+      <div class="inner">
+        <h1>Upc-atria</h1>
+        <h2>HOME OF THE BARCELONA (UPC-DFA-EPSEB) HUMAN ATRIAL MODEL</h2>
+        <a href="https://github.com/calugo/UPC-ATRIA" class="button"><small>View project on</small>GitHub</a>
+      </div>
+    </header>
+
+    <div id="content-wrapper">
+      <div class="inner clearfix">
+        <section id="main-content">
+          <h1>
+<a name="readme" class="anchor" href="#readme"><span class="octicon octicon-link"></span></a>README</h1>
+
+<p>This repository contains source codes to produce the results of the human atrial
+cell model
+reported in the article:
+<em>Are SR Ca content fluctuations or SR refractoriness the key to atrial cardiac
+alternans?: insights from a human atrial model (DOI:
+10.1152/ajpheart.00515.2013)</em></p>
+
+<p>It contains four files:</p>
+
+<ol>
+<li>This file.</li>
+<li>UPCATRIALMODEL.tar.gz: C version of the program.</li>
+<li>A version of the gnu scientific library.</li>
+<li>UPCATRIALMODELF.tar.gz: Fortran version of the program.</li>
+</ol><h2>
+<a name="the-gnu-scientific-library" class="anchor" href="#the-gnu-scientific-library"><span class="octicon octicon-link"></span></a>The gnu scientific library:</h2>
+
+<p>An updated version of the  gsl library alongside installation instructions can
+be obtained
+at: <a href="http://www.gnu.org/software/gsl">http://www.gnu.org/software/gsl</a></p>
+
+<p>Here it is only distributed for completeness, because the code heavily relies on
+the library, so it should be installed in your system.</p>
+
+<h2>
+<a name="the-c-version-bundle-upcatrialmodeltargz" class="anchor" href="#the-c-version-bundle-upcatrialmodeltargz"><span class="octicon octicon-link"></span></a>The C version bundle: UPCATRIALMODEL.tar.gz</h2>
+
+<p>Once you have extracted the files in the compressed file you will find:</p>
+
+<ol>
+<li>The source code itself, which is contained in the file UPCatrialCell.c</li>
+<li>A folder called SAMPLEOUTPUT, which contains results obtained by running the
+code as it is packed in the bundle.</li>
+<li>A shell script in a file called 'atriacompile'</li>
+</ol><p>The parameters chosen to produce the sample results are:</p>
+
+<ul>
+<li>Stimulus period Ts=400 ms.</li>
+<li>Recovery times of 200ms (healthy cell) and 700ms for the alternating cell.</li>
+</ul><p>All the output files consist of three columns which correspond to time, healthy
+cell and
+alternating cell signals respectively.</p>
+
+<p>The codes does not starts writin outputs until a number of iterations are first
+calculated, so it only prints
+values closer or at the stationary state.</p>
+
+<h3>
+<a name="compilation-and-execution-unixmac-os" class="anchor" href="#compilation-and-execution-unixmac-os"><span class="octicon octicon-link"></span></a>Compilation and Execution (Unix/Mac OS).</h3>
+
+<p>The script 'atriacompile' executes the line:</p>
+
+<p><code>$cc -I/usr/local/include -o AtrialCell UPCatrialCell.c -L/usr/local/lib -lgsl
+-lgslcblas -lm</code></p>
+
+<p>If the installation paths of the library are different they can be found by
+executing:</p>
+
+<p><code>$gsl-config --libs --cflags</code></p>
+
+<p>If the code links and compiles correctly it generates the file:  <code>AtrialCell</code>,
+which should
+be run in a terminal as:</p>
+
+<p><code>$ ./AtrialCell</code></p>
+
+<h2>
+<a name="fortran-bundle-upcatrialmodelftargz" class="anchor" href="#fortran-bundle-upcatrialmodelftargz"><span class="octicon octicon-link"></span></a>Fortran Bundle: UPCATRIALMODELF.tar.gz</h2>
+
+<p>This contains a fortran source <code>UPC-ATRIALCELL.f</code> and a binary file <code>check.dat</code>.</p>
+
+<h3>
+<a name="compilation-and-execution-unixmac-os-1" class="anchor" href="#compilation-and-execution-unixmac-os-1"><span class="octicon octicon-link"></span></a>Compilation and Execution (Unix/Mac OS)</h3>
+
+<p>To compile the code type in UNIX/MAC OS, type in a terminal:</p>
+
+<p><code>$gfortran -o exfilename sourcefilename.f</code></p>
+
+<p>then run:</p>
+
+<p><code>$./exfilename</code></p>
+
+<p>The binary file  <code>check.dat</code> is read at the beginning of the execution and it
+contains the initial data obtained for
+Ts=1000 ms which are then evaluated for other pacing values (<em>Tsvalue</em>). Then,
+the outcomes are written in another binary file called <code>output.dat.Tsvalue</code>.</p>
+
+<p>It also writes standard text files for the time evolution of the voltage and
+every Calcium concentration
+(<code>volt.dat.Tsvalue</code>) and a file with the action potential duration APD(DI)
+(<code>rest0dss.dat</code>).</p>
+        </section>
+
+        <aside id="sidebar">
+          <a href="https://github.com/calugo/UPC-ATRIA/zipball/master" class="button">
+            <small>Download</small>
+            .zip file
+          </a>
+          <a href="https://github.com/calugo/UPC-ATRIA/tarball/master" class="button">
+            <small>Download</small>
+            .tar.gz file
+          </a>
+
+          <p class="repo-owner"><a href="https://github.com/calugo/UPC-ATRIA"></a> is maintained by <a href="https://github.com/calugo">calugo</a>.</p>
+
+          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
+        </aside>
+      </div>
+    </div>
+
+  
+  </body>
+</html>
