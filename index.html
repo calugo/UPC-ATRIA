@@ -30,21 +30,32 @@
         <h1>
 <a name="readme" class="anchor" href="#readme"><span class="octicon octicon-link"></span></a>README</h1>
 
-<p>This repository contains source codes to produce the results of the human atrial
+<p>This repository contains source codes to produce:</p>
+
+<ul>
+<li><p>The results of the human atrial
 cell model
 reported in the article:
-<em>Are SR Ca content fluctuations or SR refractoriness the key to atrial cardiac
+<a href="http://ajpheart.physiology.org/content/306/11/H1540.long"><em>Are SR Ca content fluctuations or SR refractoriness the key to atrial cardiac
 alternans?: insights from a human atrial model (DOI:
-10.1152/ajpheart.00515.2013)</em></p>
+10.1152/ajpheart.00515.2013)</em></a></p></li>
+<li><p>The code to produce results in tissues by defining domains of alternating-non alternating cells and by coupling the membrane potential of each unit. Also, some scripts
+for creating python movies in one and two dimensions are provided.</p></li>
+</ul>
 
-<p>It contains four files:</p>
+<h1>
+<a name="single-cell-versions" class="anchor" href="#single-cell-versions"><span class="octicon octicon-link"></span></a>SINGLE CELL VERSIONS.</h1>
+
+<p>It is composed by four files:</p>
 
 <ol>
 <li>This file.</li>
 <li>UPCATRIALMODEL.tar.gz: C version of the program.</li>
 <li>A version of the gnu scientific library.</li>
 <li>UPCATRIALMODELF.tar.gz: Fortran version of the program.</li>
-</ol><h2>
+</ol>
+
+<h2>
 <a name="the-gnu-scientific-library" class="anchor" href="#the-gnu-scientific-library"><span class="octicon octicon-link"></span></a>The gnu scientific library:</h2>
 
 <p>An updated version of the  gsl library alongside installation instructions can
@@ -64,12 +75,16 @@ the library, so it should be installed in your system.</p>
 <li>A folder called SAMPLEOUTPUT, which contains results obtained by running the
 code as it is packed in the bundle.</li>
 <li>A shell script in a file called 'atriacompile'</li>
-</ol><p>The parameters chosen to produce the sample results are:</p>
+</ol>
+
+<p>The parameters chosen to produce the sample results are:</p>
 
 <ul>
 <li>Stimulus period Ts=400 ms.</li>
 <li>Recovery times of 200ms (healthy cell) and 700ms for the alternating cell.</li>
-</ul><p>All the output files consist of three columns which correspond to time, healthy
+</ul>
+
+<p>All the output files consist of three columns which correspond to time, healthy
 cell and
 alternating cell signals respectively.</p>
 
@@ -121,6 +136,50 @@ the outcomes are written in another binary file called <code>output.dat.Tsvalue<
 every Calcium concentration
 (<code>volt.dat.Tsvalue</code>) and a file with the action potential duration APD(DI)
 (<code>rest0dss.dat</code>).</p>
+
+<h1>
+<a name="tissue-codes-and-movies" class="anchor" href="#tissue-codes-and-movies"><span class="octicon octicon-link"></span></a>TISSUE CODES AND MOVIES.</h1>
+
+<p>The tissues code provided is written in C only. This part of the project is contained
+in a folder called TISSUEMODEL.
+It contains:</p>
+
+<ul>
+<li> UPCatrialtissues.c</li>
+<li> atriacomplie</li>
+<li> anipy/Cai2d.py</li>
+<li> anipy/V2d.py</li>
+<li> anipy/domains.py</li>
+</ul>
+
+<p>The first two files are the source code and the compilation script. Again it relies
+heavily on the GNU scientific library and it must be excecuted as:</p>
+
+<p><code>$./atriacomiple</code></p>
+
+<p>which executes:</p>
+
+<p><code>$cc -I/opt/local/include/ -o AtrialTissue UPCatrialtissues.c -L/opt/local/lib -lgsl -lgslcblas -lm -fno-stack-protector</code></p>
+
+<p>This creates the excecutable file AtrialTissue. The excecution of that file first runs the
+single cell version of the code for two cells, one alternating and one healthy, which states
+are copied into the predetermined domains established in the code (function inicond2()).</p>
+
+<p>The default configuration is Lx=300 and Ly=250. and a circle centered at ix=110 and iy=74
+of radius Ly-20. the cellular lengths are taken to be 0.025 micrometers.</p>
+
+<p>The code stores pictures of the system  at "snaps/tnCai.dat" and "snaps/tnVm.dat", so
+it is required to have a folder called 'snaps' in the excecution path. The code accepts
+random number seed environmental variables to create stochastic media (Some code is in
+    the source commented).</p>
+
+<p>The python scripts read configurations from "../snaps" and create movies, providing
+  To and Tf, values for the initial and final times, this is discussed in more detail
+  at my <a href="http://calugo.github.io">blog</a></p>
+
+<p>Please do not hesitate to contact me for assistance.</p>
+
+<p>Cheers!.</p>
       </section>
     </div>
     <footer>
