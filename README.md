@@ -128,4 +128,8 @@ random number seed environmental variables to create stochastic media (Some code
 
   The python scripts read configurations from "../snaps" and create movies, providing
   To and Tf, values for the initial and final times, this is discussed in more detail
-  at my [blog] "http://calugo.github.io"
+  at my [blog](http://calugo.github.io)
+
+Please do not hesitate to contact me for assistance.
+
+Cheers!.
