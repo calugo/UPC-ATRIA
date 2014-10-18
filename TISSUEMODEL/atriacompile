@@ -1,0 +1,7 @@
+#Compilation script for the atrial tissue code
+#To find out the appropiate paths run 'gsl-config --libs --cflags' in a terminal
+#The line here works for an standard local instalation of the  gsl library 
+
+
+cc -I/opt/local/include/ -o AtrialTissue UPCatrialtissues.c -L/opt/local/lib -lgsl -lgslcblas -lm -fno-stack-protector
+
