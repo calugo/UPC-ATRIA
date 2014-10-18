@@ -3,9 +3,9 @@
 This repository contains source codes to produce the results of the human atrial
 cell model
 reported in the article:
-*Are SR Ca content fluctuations or SR refractoriness the key to atrial cardiac
+[*Are SR Ca content fluctuations or SR refractoriness the key to atrial cardiac
 alternans?: insights from a human atrial model (DOI:
-10.1152/ajpheart.00515.2013)*
+10.1152/ajpheart.00515.2013)*](http://ajpheart.physiology.org/content/306/11/H1540.long)
 
 It contains four files:
 
