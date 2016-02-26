@@ -31,7 +31,7 @@ the library, so it should be installed in your system.
 
 ## The C version bundle: UPCATRIALMODEL.tar.gz
 
-Once you have extracted the files in the compressed file you will find:
+Once you have extracted the files from the compressed file you will find:
 
 1. The source code itself, which is contained in the file UPCatrialCell.c
 1. A folder called SAMPLEOUTPUT, which contains results obtained by running the
@@ -43,12 +43,12 @@ The parameters chosen to produce the sample results are:
 * Stimulus period Ts=400 ms.
 * Recovery times of 200ms (healthy cell) and 700ms for the alternating cell.
 
-All the output files consist of three columns which correspond to time, healthy
+The output files contain  three columns which correspond to time, healthy
 cell and
 alternating cell signals respectively.
 
-The codes does not starts writin outputs until a number of iterations are first
-calculated, so it only prints
+The program does not write the outputs until a number of iterations are first
+calculated. So it only prints
 values closer or at the stationary state.
 
 ### Compilation and Execution (Unix/Mac OS).
@@ -114,7 +114,7 @@ heavily on the GNU scientific library and it must be excecuted as:
 
   `$cc -I/opt/local/include/ -o AtrialTissue UPCatrialtissues.c -L/opt/local/lib -lgsl -lgslcblas -lm -fno-stack-protector`
 
-This creates the excecutable file AtrialTissue. The excecution of that file first runs the
+This creates the excecutable file AtrialTissue. Executing that file first runs the
 single cell version of the code for two cells, one alternating and one healthy, which states
 are copied into the predetermined domains established in the code (function inicond2()).
 
